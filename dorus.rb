@@ -4,12 +4,13 @@ module Dorus
   class DorusInterface
     FORM_LINK   = 'http://www.dorus.ru/add.html'
     ACTION_LINK = 'http://www.dorus.ru/action.php'
+    FORM_ANCHOR = '.addtable'
     DEBUG       =  true
 
     def initialize
       @mechanize = Mechanize.new
-      @page = @mechanize.get('http://www.dorus.ru/add.html')
-      @fake_form = Mechanize::Form.new(@page.at(".addtable"))
+      @page = @mechanize.get(FORM_LINK)
+      @fake_form = Mechanize::Form.new(@page.at(FORM_ANCHOR))
     end
 
     def submit(dorus_data)
