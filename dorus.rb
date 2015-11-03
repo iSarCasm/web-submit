@@ -51,8 +51,8 @@ module Dorus
         'phone' => data.phone,
         'url' => data.url,
         'skype' => data.skype,
-        'expire' => 91,
-        'coords' => '' }
+        'expire' => data.expire,
+        'coords' => data.coords }
     end
 
     def attach_images(data)
@@ -93,7 +93,10 @@ module Dorus
                   :phone, :url, :skype,
                   :coords, :expire)
 
-    def initialize; end
+    def initialize
+      @expire = 91
+      @coords = ''
+    end
 
     def load(source)
       # External format
